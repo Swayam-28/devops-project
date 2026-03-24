@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
-            steps {
-                git 'https://github.com/Swayam-28/devops-project.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t devops-app .'
@@ -17,7 +11,8 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 5000:5000 devops-app'
+                sh 'docker rm -f devops-app || true'
+                sh 'docker run -d -p 5000:5000 --name devops-app devops-app'
             }
         }
     }
