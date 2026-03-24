@@ -5,7 +5,7 @@ pipeline {
 
         stage('Clone Code') {
             steps {
-                git 'https://github.com/your-username/devops-project.git'
+                git 'https://github.com/Swayam-28/devops-project.git'
             }
         }
 
